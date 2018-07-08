@@ -1,0 +1,353 @@
+Mouni@DESKTOP-Q4CLF2S MINGW64 ~
+$ ssh -i mounikey.pem ec2-user@ec2-18-216-172-212.us-east-2.compute.amazonaws.com
+Warning: Identity file mounikey.pem not accessible: No such file or directory.
+ec2-user@ec2-18-216-172-212.us-east-2.compute.amazonaws.com: Permission denied (publickey,gssapi-keyex,gssapi-with-mic).
+
+Mouni@DESKTOP-Q4CLF2S MINGW64 ~
+$ cd . .
+bash: cd: too many arguments
+
+Mouni@DESKTOP-Q4CLF2S MINGW64 ~
+$ cd downloads
+
+Mouni@DESKTOP-Q4CLF2S MINGW64 ~/downloads
+$ ssh -i mounikey.pem ec2-user@ec2-18-216-172-212.us-east-2.compute.amazonaws.com
+Last login: Fri Jun 29 14:13:03 2018 from 203.192.210.163
+[ec2-user@bastion ~]$ vi frontend.pem
+[ec2-user@bastion ~]$ ls -ltr
+total 8
+-rw-r--r--. 1 root     root        4 Jun 26 12:13 test
+-rwx------. 1 ec2-user ec2-user 1671 Jun 29 16:42 frontend.pem
+[ec2-user@bastion ~]$ chmod 400 frontend.pem
+[ec2-user@bastion ~]$ ls -ltr
+total 8
+-rw-r--r--. 1 root     root        4 Jun 26 12:13 test
+-r--------. 1 ec2-user ec2-user 1671 Jun 29 16:42 frontend.pem
+[ec2-user@bastion ~]$ ssh -i frontend.pem ec2-user@172.31.30.220
+[ec2-user@ip-172-31-30-220 ~]$ sudo su -
+[root@ip-172-31-30-220 ~]# vi /etc/hosts
+[root@ip-172-31-30-220 ~]# vi /etc/hostname
+[root@ip-172-31-30-220 ~]# ifconfig
+eth0: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 9001
+        inet 172.31.30.220  netmask 255.255.240.0  broadcast 172.31.31.255
+        inet6 fe80::41a:1fff:fefc:804a  prefixlen 64  scopeid 0x20<link>
+        ether 06:1a:1f:fc:80:4a  txqueuelen 1000  (Ethernet)
+        RX packets 34263  bytes 2695758 (2.5 MiB)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 33962  bytes 4641257 (4.4 MiB)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+lo: flags=73<UP,LOOPBACK,RUNNING>  mtu 65536
+        inet 127.0.0.1  netmask 255.0.0.0
+        inet6 ::1  prefixlen 128  scopeid 0x10<host>
+        loop  txqueuelen 1000  (Local Loopback)
+        RX packets 0  bytes 0 (0.0 B)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 0  bytes 0 (0.0 B)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+[root@ip-172-31-30-220 ~]# vi /etc/hosts
+[root@ip-172-31-30-220 ~]# hostname -f/etc/hostname
+hostname: invalid option -- '/'
+Usage: hostname [-b] {hostname|-F file}         set host name (from file)
+       hostname [-a|-A|-d|-f|-i|-I|-s|-y]       display formatted name
+       hostname                                 display host name
+
+       {yp,nis,}domainname {nisdomain|-F file}  set NIS domain name (from file)
+       {yp,nis,}domainname                      display NIS domain name
+
+       dnsdomainname                            display dns domain name
+
+       hostname -V|--version|-h|--help          print info and exit
+
+Program name:
+       {yp,nis,}domainname=hostname -y
+       dnsdomainname=hostname -d
+
+Program options:
+    -a, --alias            alias names
+    -A, --all-fqdns        all long host names (FQDNs)
+    -b, --boot             set default hostname if none available
+    -d, --domain           DNS domain name
+    -f, --fqdn, --long     long host name (FQDN)
+    -F, --file             read host name or NIS domain name from given file
+    -i, --ip-address       addresses for the host name
+    -I, --all-ip-addresses all addresses for the host
+    -s, --short            short host name
+    -y, --yp, --nis        NIS/YP domain name
+
+Description:
+   This command can get or set the host name or the NIS domain name. You can
+   also get the DNS domain or the FQDN (fully qualified domain name).
+   Unless you are using bind or NIS for host lookups you can change the
+   FQDN (Fully Qualified Domain Name) and the DNS domain name (which is
+   part of the FQDN) in the /etc/hosts file.
+[root@ip-172-31-30-220 ~]# hostname
+ip-172-31-30-220.us-east-2.compute.internal
+[root@ip-172-31-30-220 ~]# hostname -F/etc/hostname
+[root@ip-172-31-30-220 ~]# hostname
+frontend
+[root@ip-172-31-30-220 ~]# exit
+logout
+[ec2-user@ip-172-31-30-220 ~]$ exit
+logout
+Connection to 172.31.30.220 closed.
+[ec2-user@bastion ~]$ hostname
+bastion
+[ec2-user@bastion ~]$ ssh -i frontend.pem ec2-user@172.31.30.220
+Last login: Fri Jun 29 16:47:16 2018 from ip-172-31-47-94.us-east-2.compute.internal
+[ec2-user@frontend ~]$ sudo su
+[root@frontend ec2-user]# hostname
+frontend
+[root@frontend ec2-user]# yum install httpd-y
+Loaded plugins: amazon-id, rhui-lb, search-disabled-repos
+rhui-REGION-client-config-server-7                       | 2.9 kB     00:00
+rhui-REGION-rhel-server-releases                         | 3.5 kB     00:00
+rhui-REGION-rhel-server-rh-common                        | 3.8 kB     00:00
+(1/7): rhui-REGION-client-config-server-7/x86_64/primary_d | 3.3 kB   00:00
+(2/7): rhui-REGION-rhel-server-releases/7Server/x86_64/gro | 855 kB   00:00
+(3/7): rhui-REGION-rhel-server-rh-common/7Server/x86_64/gr |  104 B   00:00
+(4/7): rhui-REGION-rhel-server-rh-common/7Server/x86_64/pr | 121 kB   00:00
+(5/7): rhui-REGION-rhel-server-releases/7Server/x86_64/upd | 2.9 MB   00:00
+(6/7): rhui-REGION-rhel-server-rh-common/7Server/x86_64/up |  33 kB   00:00
+(7/7): rhui-REGION-rhel-server-releases/7Server/x86_64/pri |  54 MB   00:01
+No package httpd-y available.
+Error: Nothing to do
+[root@frontend ec2-user]# yum install httpd -y
+Loaded plugins: amazon-id, rhui-lb, search-disabled-repos
+Resolving Dependencies
+--> Running transaction check
+---> Package httpd.x86_64 0:2.4.6-80.el7_5.1 will be installed
+--> Processing Dependency: httpd-tools = 2.4.6-80.el7_5.1 for package: httpd-2.4.6-80.el7_5.1.x86_64
+--> Processing Dependency: system-logos >= 7.92.1-1 for package: httpd-2.4.6-80.el7_5.1.x86_64
+--> Processing Dependency: /etc/mime.types for package: httpd-2.4.6-80.el7_5.1.x86_64
+--> Processing Dependency: libapr-1.so.0()(64bit) for package: httpd-2.4.6-80.el7_5.1.x86_64
+--> Processing Dependency: libaprutil-1.so.0()(64bit) for package: httpd-2.4.6-80.el7_5.1.x86_64
+--> Running transaction check
+---> Package apr.x86_64 0:1.4.8-3.el7_4.1 will be installed
+---> Package apr-util.x86_64 0:1.5.2-6.el7 will be installed
+---> Package httpd-tools.x86_64 0:2.4.6-80.el7_5.1 will be installed
+---> Package mailcap.noarch 0:2.1.41-2.el7 will be installed
+---> Package redhat-logos.noarch 0:70.0.3-6.el7 will be installed
+--> Finished Dependency Resolution
+
+Dependencies Resolved
+
+================================================================================
+ Package      Arch   Version             Repository                        Size
+================================================================================
+Installing:
+ httpd        x86_64 2.4.6-80.el7_5.1    rhui-REGION-rhel-server-releases 1.2 M
+Installing for dependencies:
+ apr          x86_64 1.4.8-3.el7_4.1     rhui-REGION-rhel-server-releases 103 k
+ apr-util     x86_64 1.5.2-6.el7         rhui-REGION-rhel-server-releases  92 k
+ httpd-tools  x86_64 2.4.6-80.el7_5.1    rhui-REGION-rhel-server-releases  89 k
+ mailcap      noarch 2.1.41-2.el7        rhui-REGION-rhel-server-releases  31 k
+ redhat-logos noarch 70.0.3-6.el7        rhui-REGION-rhel-server-releases  13 M
+
+Transaction Summary
+================================================================================
+Install  1 Package (+5 Dependent packages)
+
+Total download size: 14 M
+Installed size: 18 M
+Downloading packages:
+(1/6): apr-1.4.8-3.el7_4.1.x86_64.rpm                      | 103 kB   00:00
+(2/6): apr-util-1.5.2-6.el7.x86_64.rpm                     |  92 kB   00:00
+(3/6): httpd-2.4.6-80.el7_5.1.x86_64.rpm                   | 1.2 MB   00:00
+(4/6): httpd-tools-2.4.6-80.el7_5.1.x86_64.rpm             |  89 kB   00:00
+(5/6): mailcap-2.1.41-2.el7.noarch.rpm                     |  31 kB   00:00
+(6/6): redhat-logos-70.0.3-6.el7.noarch.rpm                |  13 MB   00:00
+--------------------------------------------------------------------------------
+Total                                               21 MB/s |  14 MB  00:00
+Running transaction check
+Running transaction test
+Transaction test succeeded
+Running transaction
+  Installing : apr-1.4.8-3.el7_4.1.x86_64                                   1/6
+  Installing : apr-util-1.5.2-6.el7.x86_64                                  2/6
+  Installing : httpd-tools-2.4.6-80.el7_5.1.x86_64                          3/6
+  Installing : mailcap-2.1.41-2.el7.noarch                                  4/6
+  Installing : redhat-logos-70.0.3-6.el7.noarch                             5/6
+  Installing : httpd-2.4.6-80.el7_5.1.x86_64                                6/6
+  Verifying  : redhat-logos-70.0.3-6.el7.noarch                             1/6
+  Verifying  : mailcap-2.1.41-2.el7.noarch                                  2/6
+  Verifying  : httpd-2.4.6-80.el7_5.1.x86_64                                3/6
+  Verifying  : apr-util-1.5.2-6.el7.x86_64                                  4/6
+  Verifying  : httpd-tools-2.4.6-80.el7_5.1.x86_64                          5/6
+  Verifying  : apr-1.4.8-3.el7_4.1.x86_64                                   6/6
+
+Installed:
+  httpd.x86_64 0:2.4.6-80.el7_5.1
+
+Dependency Installed:
+  apr.x86_64 0:1.4.8-3.el7_4.1               apr-util.x86_64 0:1.5.2-6.el7
+  httpd-tools.x86_64 0:2.4.6-80.el7_5.1      mailcap.noarch 0:2.1.41-2.el7
+  redhat-logos.noarch 0:70.0.3-6.el7
+
+Complete!
+[root@frontend ec2-user]# yum install httpd -y^c
+Loaded plugins: amazon-id, rhui-lb, search-disabled-repos
+Usage: yum [options] COMMAND
+
+List of Commands:
+
+check          Check for problems in the rpmdb
+check-update   Check for available package updates
+clean          Remove cached data
+deplist        List a package's dependencies
+distribution-synchronization Synchronize installed packages to the latest available versions
+downgrade      downgrade a package
+erase          Remove a package or packages from your system
+fs             Acts on the filesystem data of the host, mainly for removing docs/lanuages for minimal hosts.
+fssnapshot     Creates filesystem snapshots, or lists/deletes current snapshots.
+groups         Display, or use, the groups information
+help           Display a helpful usage message
+history        Display, or use, the transaction history
+info           Display details about a package or group of packages
+install        Install a package or packages on your system
+list           List a package or groups of packages
+load-transaction load a saved transaction from filename
+makecache      Generate the metadata cache
+provides       Find what package provides the given value
+reinstall      reinstall a package
+repo-pkgs      Treat a repo. as a group of packages, so we can install/remove all of them
+repolist       Display the configured software repositories
+search         Search package details for the given string
+shell          Run an interactive yum shell
+swap           Simple way to swap packages, instead of using shell
+update         Update a package or packages on your system
+update-minimal Works like upgrade, but goes to the 'newest' package match which fixes a problem that affects your system
+updateinfo     Acts on repository update information
+upgrade        Update packages taking obsoletes into account
+version        Display a version for the machine and/or available repos.
+
+
+Command line error: no such option: -^
+[root@frontend ec2-user]# systemct1 start httpd
+bash: systemct1: command not found
+[root@frontend ec2-user]# yum install httpd -y^C
+Loaded plugins: amazon-id, rhui-lb, search-disabled-repos
+Usage: yum [options] COMMAND
+
+List of Commands:
+
+check          Check for problems in the rpmdb
+check-update   Check for available package updates
+clean          Remove cached data
+deplist        List a package's dependencies
+distribution-synchronization Synchronize installed packages to the latest available versions
+downgrade      downgrade a package
+erase          Remove a package or packages from your system
+fs             Acts on the filesystem data of the host, mainly for removing docs/lanuages for minimal hosts.
+fssnapshot     Creates filesystem snapshots, or lists/deletes current snapshots.
+groups         Display, or use, the groups information
+help           Display a helpful usage message
+history        Display, or use, the transaction history
+info           Display details about a package or group of packages
+install        Install a package or packages on your system
+list           List a package or groups of packages
+load-transaction load a saved transaction from filename
+makecache      Generate the metadata cache
+provides       Find what package provides the given value
+reinstall      reinstall a package
+repo-pkgs      Treat a repo. as a group of packages, so we can install/remove all of them
+repolist       Display the configured software repositories
+search         Search package details for the given string
+shell          Run an interactive yum shell
+swap           Simple way to swap packages, instead of using shell
+update         Update a package or packages on your system
+update-minimal Works like upgrade, but goes to the 'newest' package match which fixes a problem that affects your system
+updateinfo     Acts on repository update information
+upgrade        Update packages taking obsoletes into account
+version        Display a version for the machine and/or available repos.
+
+
+Command line error: no such option: -^
+[root@frontend ec2-user]# system1 start httpd
+bash: system1: command not found
+[root@frontend ec2-user]# systemct1 start httpd
+bash: systemct1: command not found
+[root@frontend ec2-user]# yum install httpd  -y^C
+Loaded plugins: amazon-id, rhui-lb, search-disabled-repos
+Usage: yum [options] COMMAND
+
+List of Commands:
+
+check          Check for problems in the rpmdb
+check-update   Check for available package updates
+clean          Remove cached data
+deplist        List a package's dependencies
+distribution-synchronization Synchronize installed packages to the latest available versions
+downgrade      downgrade a package
+erase          Remove a package or packages from your system
+fs             Acts on the filesystem data of the host, mainly for removing docs/lanuages for minimal hosts.
+fssnapshot     Creates filesystem snapshots, or lists/deletes current snapshots.
+groups         Display, or use, the groups information
+help           Display a helpful usage message
+history        Display, or use, the transaction history
+info           Display details about a package or group of packages
+install        Install a package or packages on your system
+list           List a package or groups of packages
+load-transaction load a saved transaction from filename
+makecache      Generate the metadata cache
+provides       Find what package provides the given value
+reinstall      reinstall a package
+repo-pkgs      Treat a repo. as a group of packages, so we can install/remove all of them
+repolist       Display the configured software repositories
+search         Search package details for the given string
+shell          Run an interactive yum shell
+swap           Simple way to swap packages, instead of using shell
+update         Update a package or packages on your system
+update-minimal Works like upgrade, but goes to the 'newest' package match which fixes a problem that affects your system
+updateinfo     Acts on repository update information
+upgrade        Update packages taking obsoletes into account
+version        Display a version for the machine and/or available repos.
+
+
+Command line error: no such option: -^
+[root@frontend ec2-user]# systemct 1 start httpd
+bash: systemct: command not found
+[root@frontend ec2-user]# systemct1 start httpd
+bash: systemct1: command not found
+[root@frontend ec2-user]#  yum install httpd -y^C
+Loaded plugins: amazon-id, rhui-lb, search-disabled-repos
+Usage: yum [options] COMMAND
+
+List of Commands:
+
+check          Check for problems in the rpmdb
+check-update   Check for available package updates
+clean          Remove cached data
+deplist        List a package's dependencies
+distribution-synchronization Synchronize installed packages to the latest available versions
+downgrade      downgrade a package
+erase          Remove a package or packages from your system
+fs             Acts on the filesystem data of the host, mainly for removing docs/lanuages for minimal hosts.
+fssnapshot     Creates filesystem snapshots, or lists/deletes current snapshots.
+groups         Display, or use, the groups information
+help           Display a helpful usage message
+history        Display, or use, the transaction history
+info           Display details about a package or group of packages
+install        Install a package or packages on your system
+list           List a package or groups of packages
+load-transaction load a saved transaction from filename
+makecache      Generate the metadata cache
+provides       Find what package provides the given value
+reinstall      reinstall a package
+repo-pkgs      Treat a repo. as a group of packages, so we can install/remove all of them
+repolist       Display the configured software repositories
+search         Search package details for the given string
+shell          Run an interactive yum shell
+swap           Simple way to swap packages, instead of using shell
+update         Update a package or packages on your system
+update-minimal Works like upgrade, but goes to the 'newest' package match which fixes a problem that affects your system
+updateinfo     Acts on repository update information
+upgrade        Update packages taking obsoletes into account
+version        Display a version for the machine and/or available repos.
+
+
+Command line error: no such option: -^
+[root@frontend ec2-user]# ps -ef | grep httpd
+root     19430 19284  0 18:04 pts/0    00:00:00 grep --color=auto httpd
+[root@frontend ec2-user]#
