@@ -1,0 +1,206 @@
+
+Mouni@DESKTOP-Q4CLF2S MINGW64 ~/Desktop
+$ ssh -i mounikey.pem ec2-user@ec2-18-216-172-212.us-east-2.compute.amazonaws.com
+Last login: Tue Jun 26 09:34:27 2018 from 203.192.210.163
+[ec2-user@ip-172-31-47-94 ~]$
+[ec2-user@ip-172-31-47-94 ~]$ pwd
+/home/ec2-user
+[ec2-user@ip-172-31-47-94 ~]$ ls-ltr
+-bash: ls-ltr: command not found
+[ec2-user@ip-172-31-47-94 ~]$ ls
+[ec2-user@ip-172-31-47-94 ~]$ sudo su
+[root@ip-172-31-47-94 ec2-user]# pwd
+/home/ec2-user
+[root@ip-172-31-47-94 ec2-user]# cd
+[root@ip-172-31-47-94 ~]# exit
+exit
+[ec2-user@ip-172-31-47-94 ~]$ cd/usr
+-bash: cd/usr: No such file or directory
+[ec2-user@ip-172-31-47-94 ~]$ cd/tmp
+-bash: cd/tmp: No such file or directory
+[ec2-user@ip-172-31-47-94 ~]$ cd /usr
+[ec2-user@ip-172-31-47-94 usr]$ pwd
+/usr
+[ec2-user@ip-172-31-47-94 usr]$ cd
+[ec2-user@ip-172-31-47-94 ~]$ pwd
+/home/ec2-user
+[ec2-user@ip-172-31-47-94 ~]$ cd /tmp
+[ec2-user@ip-172-31-47-94 tmp]$ cd ~
+[ec2-user@ip-172-31-47-94 ~]$ cd /opt
+[ec2-user@ip-172-31-47-94 opt]$ pwd
+/opt
+[ec2-user@ip-172-31-47-94 opt]$ cd/home/ec2-user
+-bash: cd/home/ec2-user: No such file or directory
+[ec2-user@ip-172-31-47-94 opt]$ pwd
+/opt
+[ec2-user@ip-172-31-47-94 opt]$ cd /home/ec2-user
+[ec2-user@ip-172-31-47-94 ~]$ pwd
+/home/ec2-user
+[ec2-user@ip-172-31-47-94 ~]$ sudo su
+[root@ip-172-31-47-94 ec2-user]# cd
+[root@ip-172-31-47-94 ~]# pwd
+/root
+[root@ip-172-31-47-94 ~]# hostname
+ip-172-31-47-94.us-east-2.compute.internal
+[root@ip-172-31-47-94 ~]# vi/etc/hostname
+bash: vi/etc/hostname: No such file or directory
+[root@ip-172-31-47-94 ~]# vi /etc/hostname
+[root@ip-172-31-47-94 ~]# cat /etc/hostname
+bastion
+[root@ip-172-31-47-94 ~]# vi /etc/hostname
+[root@ip-172-31-47-94 ~]# ifconfig
+eth0: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 9001
+        inet 172.31.47.94  netmask 255.255.240.0  broadcast 172.31.47.255
+        inet6 fe80::812:e2ff:feb4:4c90  prefixlen 64  scopeid 0x20<link>
+        ether 0a:12:e2:b4:4c:90  txqueuelen 1000  (Ethernet)
+        RX packets 12663  bytes 1162556 (1.1 MiB)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 11838  bytes 1848698 (1.7 MiB)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+lo: flags=73<UP,LOOPBACK,RUNNING>  mtu 65536
+        inet 127.0.0.1  netmask 255.0.0.0
+        inet6 ::1  prefixlen 128  scopeid 0x10<host>
+        loop  txqueuelen 1000  (Local Loopback)
+        RX packets 0  bytes 0 (0.0 B)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 0  bytes 0 (0.0 B)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+[root@ip-172-31-47-94 ~]# vi /etc/hosts
+[root@ip-172-31-47-94 ~]# hostname -f /etc/hostname
+Usage: hostname [-b] {hostname|-F file}         set host name (from file)
+       hostname [-a|-A|-d|-f|-i|-I|-s|-y]       display formatted name
+       hostname                                 display host name
+
+       {yp,nis,}domainname {nisdomain|-F file}  set NIS domain name (from file)
+       {yp,nis,}domainname                      display NIS domain name
+
+       dnsdomainname                            display dns domain name
+
+       hostname -V|--version|-h|--help          print info and exit
+
+Program name:
+       {yp,nis,}domainname=hostname -y
+       dnsdomainname=hostname -d
+
+Program options:
+    -a, --alias            alias names
+    -A, --all-fqdns        all long host names (FQDNs)
+    -b, --boot             set default hostname if none available
+    -d, --domain           DNS domain name
+    -f, --fqdn, --long     long host name (FQDN)
+    -F, --file             read host name or NIS domain name from given file
+    -i, --ip-address       addresses for the host name
+    -I, --all-ip-addresses all addresses for the host
+    -s, --short            short host name
+    -y, --yp, --nis        NIS/YP domain name
+
+Description:
+   This command can get or set the host name or the NIS domain name. You can
+   also get the DNS domain or the FQDN (fully qualified domain name).
+   Unless you are using bind or NIS for host lookups you can change the
+   FQDN (Fully Qualified Domain Name) and the DNS domain name (which is
+   part of the FQDN) in the /etc/hosts file.
+[root@ip-172-31-47-94 ~]# hostname
+ip-172-31-47-94.us-east-2.compute.internal
+[root@ip-172-31-47-94 ~]# hostname -f /etc/hostname
+Usage: hostname [-b] {hostname|-F file}         set host name (from file)
+       hostname [-a|-A|-d|-f|-i|-I|-s|-y]       display formatted name
+       hostname                                 display host name
+
+       {yp,nis,}domainname {nisdomain|-F file}  set NIS domain name (from file)
+       {yp,nis,}domainname                      display NIS domain name
+
+       dnsdomainname                            display dns domain name
+
+       hostname -V|--version|-h|--help          print info and exit
+
+Program name:
+       {yp,nis,}domainname=hostname -y
+       dnsdomainname=hostname -d
+
+Program options:
+    -a, --alias            alias names
+    -A, --all-fqdns        all long host names (FQDNs)
+    -b, --boot             set default hostname if none available
+    -d, --domain           DNS domain name
+    -f, --fqdn, --long     long host name (FQDN)
+    -F, --file             read host name or NIS domain name from given file
+    -i, --ip-address       addresses for the host name
+    -I, --all-ip-addresses all addresses for the host
+    -s, --short            short host name
+    -y, --yp, --nis        NIS/YP domain name
+
+Description:
+   This command can get or set the host name or the NIS domain name. You can
+   also get the DNS domain or the FQDN (fully qualified domain name).
+   Unless you are using bind or NIS for host lookups you can change the
+   FQDN (Fully Qualified Domain Name) and the DNS domain name (which is
+   part of the FQDN) in the /etc/hosts file.
+[root@ip-172-31-47-94 ~]# vi /etc/hosts
+[root@ip-172-31-47-94 ~]# ifconfig
+eth0: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 9001
+        inet 172.31.47.94  netmask 255.255.240.0  broadcast 172.31.47.255
+        inet6 fe80::812:e2ff:feb4:4c90  prefixlen 64  scopeid 0x20<link>
+        ether 0a:12:e2:b4:4c:90  txqueuelen 1000  (Ethernet)
+        RX packets 13071  bytes 1188360 (1.1 MiB)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 12128  bytes 1887449 (1.8 MiB)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+lo: flags=73<UP,LOOPBACK,RUNNING>  mtu 65536
+        inet 127.0.0.1  netmask 255.0.0.0
+        inet6 ::1  prefixlen 128  scopeid 0x10<host>
+        loop  txqueuelen 1000  (Local Loopback)
+        RX packets 0  bytes 0 (0.0 B)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 0  bytes 0 (0.0 B)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+[root@ip-172-31-47-94 ~]# vi /etc/hosts
+[root@ip-172-31-47-94 ~]# hostname -F /etc/hostname
+[root@ip-172-31-47-94 ~]# hostname
+bastion
+[root@ip-172-31-47-94 ~]# exit
+exit
+[ec2-user@ip-172-31-47-94 ~]$ pwd
+/home/ec2-user
+[ec2-user@ip-172-31-47-94 ~]$ who am i
+ec2-user pts/0        2018-06-26 11:18 (203.192.210.163)
+[ec2-user@ip-172-31-47-94 ~]$ sudo su
+[root@bastion ec2-user]# last
+ec2-user pts/0        203.192.210.163  Tue Jun 26 11:18   still logged in
+ec2-user pts/0        203.192.210.163  Tue Jun 26 09:34 - 09:46  (00:12)
+ec2-user pts/0        203.192.210.163  Mon Jun 25 14:32 - 14:37  (00:04)
+ec2-user pts/0        203.192.210.163  Mon Jun 25 14:27 - 14:31  (00:04)
+ec2-user pts/0        203.192.210.163  Mon Jun 25 14:16 - 14:25  (00:09)
+ec2-user pts/0        203.192.210.163  Mon Jun 25 13:54 - 14:15  (00:20)
+reboot   system boot  3.10.0-862.el7.x Mon Jun 25 13:29 - 12:08  (22:39)
+
+wtmp begins Mon Jun 25 13:29:17 2018
+[root@bastion ec2-user]# sudo su -
+Last login: Tue Jun 26 12:08:35 UTC 2018 on pts/0
+[root@bastion ~]# exit
+logout
+[root@bastion ec2-user]# echo hai
+hai
+[root@bastion ec2-user]# ls -ltr
+total 0
+[root@bastion ec2-user]# echo "hai" >test
+[root@bastion ec2-user]# ls -ltr
+total 4
+-rw-r--r--. 1 root root 4 Jun 26 12:13 test
+[root@bastion ec2-user]# cat test
+hai
+[root@bastion ec2-user]# exit
+exit
+[ec2-user@ip-172-31-47-94 ~]$ ssh -i mounikey.pem ec2-user@ec2-18-216-172-212.us-east-2.compute.amazonaws.com
+Warning: Identity file mounikey.pem not accessible: No such file or directory.
+The authenticity of host 'ec2-18-216-172-212.us-east-2.compute.amazonaws.com (172.31.47.94)' can't be established.
+ECDSA key fingerprint is SHA256:VaYC91/KnXGh6IgCyhBTe67EzPKXGTSFAS7vt3ojqq8.
+ECDSA key fingerprint is MD5:5a:e5:99:82:6b:49:4d:a5:58:66:51:83:77:cd:b3:a0.
+Are you sure you want to continue connecting (yes/no)? yes
+Warning: Permanently added 'ec2-18-216-172-212.us-east-2.compute.amazonaws.com,172.31.47.94' (ECDSA) to the list of known hosts.
+Permission denied (publickey,gssapi-keyex,gssapi-with-mic).
+[ec2-user@ip-172-31-47-94 ~]$
