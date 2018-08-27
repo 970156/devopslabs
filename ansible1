@@ -1,0 +1,12 @@
+to download ansible
+enable epel using 
+yum install https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
+ 
+yum install update
+
+yum install ansible
+
+to install apche we will use command 
+ansible localhoast -m yum -a "name=httpd state=present"
+to start apache
+ansible localhoast -m service -a "name=httpd state=started"
